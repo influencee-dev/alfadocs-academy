@@ -68,10 +68,10 @@ for n, l in enumerate(lezioni, 1):
     if l.get("data_pubblicazione"): v["uploadDate"] = l["data_pubblicazione"]
     if page_url: v["url"] = f"{page_url}#lezione-{n}"
     videos.append({"@type": "ListItem", "position": n, "item": v})
-course = {"@type": "Course", "name": "Marketing per studi medici e dentistici",
+course = {"@type": "Course", "name": "Marketing per dentisti",
           "description": sito["intro"], "inLanguage": "it", "isAccessibleForFree": True,
           "provider": {"@id": org["@id"]},
-          "audience": {"@type": "Audience", "audienceType": "Titolari di studi medici, dentistici e poliambulatori"},
+          "audience": {"@type": "Audience", "audienceType": "Dentisti e titolari di studi dentistici"},
           "teaches": [l["titolo"] for l in lezioni],
           "offers": {"@type": "Offer", "price": 0, "priceCurrency": "EUR", "category": "Free"},
           "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "Online", "inLanguage": "it"}}
@@ -84,11 +84,24 @@ jsonld = ('<script type="application/ld+json">\n'
           + json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1).replace("</", "<\\/")
           + "\n</script>")
 
+lead = data["lead"]
+lead_cfg = {k: v for k, v in lead.items() if not k.startswith("_")}
+lead_json = ('<script type="application/json" id="lead-config">'
+             + json.dumps(lead_cfg, ensure_ascii=False).replace("</", "<\\/") + "</script>")
+gtm = ""
+if lead.get("gtm_id"):
+    g = e(lead["gtm_id"])
+    gtm = ("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});"
+           "var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;"
+           f"j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{g}');</script>")
+
 out = (ROOT / "template.html").read_text(encoding="utf-8")
 for k, v in {"HEAD": "\n".join(head), "JSONLD": jsonld, "LESSONS": "\n".join(cards), "FAQ": faq_html,
              "N": str(len(lezioni)), "INTRO": e(sito["intro"]), "FIRST_ID": e(lezioni[0]["id"]),
-             "FIRST_TITLE": e(lezioni[0]["titolo"]), "YEAR": str(datetime.date.today().year)}.items():
+             "FIRST_TITLE": e(lezioni[0]["titolo"]), "LEAD_CONFIG": lead_json, "GTM_HEAD": gtm, "PRIVACY_URL": e(lead["privacy_url"]), "YEAR": str(datetime.date.today().year)}.items():
     out = out.replace("{{" + k + "}}", v)
 assert "{{" not in out, "segnaposto non sostituito"
 (ROOT / "index.html").write_text(out, encoding="utf-8")
+if not ((lead["hubspot_portal_id"] and lead["hubspot_form_guid"]) or lead["webhook_url"]):
+    print("ATTENZIONE: nessuna destinazione lead in lezioni.json -> i lead NON vengono salvati")
 print(f"index.html generato: {len(lezioni)} lezioni, {len(faq)} FAQ" + ("" if url else " (manca sito.url: canonical non impostato)"))

@@ -1,4 +1,4 @@
-# AlfaDocs Academy – Marketing per studi medici e dentistici
+# AlfaDocs Academy – Marketing per dentisti
 
 Landing con le 13 video lezioni del corso, nello stile di alfadocs.com, ottimizzata per SEO e motori AI.
 

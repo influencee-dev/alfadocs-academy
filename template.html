@@ -111,6 +111,28 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:0 0 20px}
 
+
+/* Form lead */
+.lead{border:0;padding:0;border-radius:var(--radius-xl);max-width:560px;width:calc(100% - 32px);box-shadow:var(--shadow-hero);color:var(--ad-text-body)}
+.lead::backdrop{background:rgba(41,46,83,.6);backdrop-filter:blur(4px)}
+.lead__head{background:var(--ad-deep-purple);color:rgba(255,255,255,.85);padding:28px 32px 24px;position:relative}
+.lead__head .eyebrow{background:rgba(255,255,255,.12);color:#fff}
+.lead__head h2{color:#fff;font-size:26px;margin:14px 0 6px}
+.lead__head p{margin:0}
+.lead__close{background:none;border:0;cursor:pointer;font-family:inherit;position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;color:#fff;font-size:24px;line-height:1}
+.lead__close:hover{background:rgba(255,255,255,.12)}
+.lead form{padding:24px 32px 28px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:6px}
+.field--full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:600;color:var(--ad-navy)}
+.field input,.field select{font:inherit;color:var(--ad-navy);border:1px solid var(--ad-border);border-radius:var(--radius-sm);padding:12px 14px;background:#fff;width:100%}
+.field input:focus,.field select:focus{outline:2px solid var(--ad-primary);outline-offset:0;border-color:var(--ad-primary)}
+.consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4}
+.consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--ad-primary);flex:none}
+.lead .btn{grid-column:1/-1;width:100%}
+.lead__error{grid-column:1/-1;margin:0;color:#c0262d;font-size:14px;font-weight:600}
+@media (max-width:640px){.lead form{grid-template-columns:1fr;padding:20px}.lead__head{padding:24px 20px 20px}}
+
 /* Pillars dark */
 .pillars{margin:0 16px;background:var(--ad-deep-purple);border-radius:var(--radius-section);padding:80px 0;color:rgba(255,255,255,.8)}
 .pillars h2{color:#fff}
@@ -150,12 +172,13 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 {{JSONLD}}
+{{GTM_HEAD}}
 </head>
 <body>
 
 <header class="header">
   <div class="container header__inner">
-    <a class="header__brand" href="https://www.alfadocs.com/" aria-label="AlfaDocs, software gestionale per studi medici e dentistici">
+    <a class="header__brand" href="https://www.alfadocs.com/" aria-label="AlfaDocs, software gestionale per studi dentistici">
       <img src="https://www.alfadocs.com/hubfs/Alfadocs%20Rebrand/Alfadocs_Logo_Main.svg" alt="AlfaDocs" width="140" height="32">
       <span>Academy</span>
     </a>
@@ -168,7 +191,7 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
     <div class="container hero__grid">
       <div>
         <span class="eyebrow">AlfaDocs Academy · Corso gratuito</span>
-        <h1>Marketing per <em class="serif">studi medici e dentistici</em>: il corso in {{N}} lezioni</h1>
+        <h1>Marketing per <em class="serif">dentisti</em>: il corso gratuito in {{N}} lezioni</h1>
         <p class="lead">{{INTRO}}</p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#lezione-1" data-start>Inizia dalla lezione 1</a>
@@ -191,7 +214,7 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Il programma</span>
-        <h2 id="corso-title">Le {{N}} lezioni del corso di <em class="serif">marketing sanitario</em></h2>
+        <h2 id="corso-title">Le {{N}} lezioni del corso di <em class="serif">marketing odontoiatrico</em></h2>
         <p>Ogni video si guarda direttamente in questa pagina, nell'ordine che preferisci. Segna le lezioni completate per tenere traccia dei tuoi progressi.</p>
       </div>
       <div class="course__bar">
@@ -209,15 +232,15 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
       <div class="section-head">
         <span class="eyebrow">Cosa imparerai</span>
         <h2 id="impari-title">Più pazienti, <em class="serif">meno improvvisazione</em></h2>
-        <p>Un percorso pratico per chi guida uno studio e vuole usare il digitale per farsi trovare, farsi scegliere e far tornare i pazienti.</p>
+        <p>Un percorso pratico per il dentista che vuole usare il digitale per far trovare lo studio, farlo scegliere e far tornare i pazienti.</p>
       </div>
       <div class="pillars__grid">
-        <div class="pillar"><div class="ico">◎</div><h3>Farsi trovare</h3><p>Ecosistema digitale dello studio, Google Business Profile e ricerche dei pazienti, anche con l'intelligenza artificiale.</p></div>
+        <div class="pillar"><div class="ico">◎</div><h3>Farsi trovare</h3><p>Ecosistema digitale dello studio dentistico, Google Business Profile e ricerche dei pazienti, anche con l'intelligenza artificiale.</p></div>
         <div class="pillar"><div class="ico">↗</div><h3>Farsi scegliere</h3><p>Comunicazione, identità visiva, social e campagne Meta Ads per presentare lo studio in modo chiaro e professionale.</p></div>
         <div class="pillar"><div class="ico">♥</div><h3>Far tornare i pazienti</h3><p>Raccolta contatti, community, automazioni e fidelizzazione per costruire relazioni che durano.</p></div>
       </div>
       <ul class="audience" aria-label="A chi è rivolto">
-        <li>Studi dentistici</li><li>Studi medici</li><li>Poliambulatori</li><li>Fisioterapisti</li><li>Medicina estetica</li>
+        <li>Dentisti titolari</li><li>Studi dentistici</li><li>Cliniche odontoiatriche</li><li>Direttori sanitari</li><li>Segreteria e accoglienza</li>
       </ul>
     </div>
   </section>
@@ -226,7 +249,7 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Domande frequenti</span>
-        <h2 id="faq-title">Marketing per studi medici: <em class="serif">le risposte</em></h2>
+        <h2 id="faq-title">Marketing per dentisti: <em class="serif">le risposte</em></h2>
       </div>
       <div class="faq__list">
 {{FAQ}}
@@ -239,7 +262,7 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
       <div class="cta__box">
         <span class="eyebrow">Passa all'azione</span>
         <h2>Metti in pratica il corso con <em class="serif">AlfaDocs</em></h2>
-        <p>Il software gestionale in cloud per studi medici e dentistici: agenda, cartella clinica, fatturazione e marketing in un'unica piattaforma.</p>
+        <p>Il software gestionale in cloud per studi dentistici: agenda, cartella clinica, fatturazione e marketing in un'unica piattaforma.</p>
         <a class="btn btn--primary" href="https://www.alfadocs.com/">Scopri AlfaDocs</a>
       </div>
     </div>
@@ -253,6 +276,32 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
   </div>
 </footer>
 
+<dialog class="lead" id="lead" aria-labelledby="lead-title">
+  <div class="lead__head">
+    <button class="lead__close" type="button" id="lead-close" aria-label="Chiudi">×</button>
+    <span class="eyebrow">Accesso gratuito</span>
+    <h2 id="lead-title">Sblocca tutte le {{N}} lezioni</h2>
+    <p>Lascia i tuoi dati e guarda subito il corso di marketing per dentisti.</p>
+  </div>
+  <form id="lead-form" novalidate>
+    <div class="field"><label for="f-nome">Nome *</label><input id="f-nome" name="firstname" autocomplete="given-name" required></div>
+    <div class="field"><label for="f-cognome">Cognome *</label><input id="f-cognome" name="lastname" autocomplete="family-name" required></div>
+    <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="f-tel">Telefono *</label><input id="f-tel" name="phone" type="tel" autocomplete="tel" required pattern="[0-9+ ()\-]{6,}"></div>
+    <div class="field"><label for="f-studio">Nome dello studio *</label><input id="f-studio" name="company" autocomplete="organization" required></div>
+    <div class="field"><label for="f-ruolo">Ruolo *</label>
+      <select id="f-ruolo" name="jobtitle" required>
+        <option value="">Seleziona</option>
+        <option>Dentista titolare</option><option>Dentista collaboratore</option><option>Direttore sanitario</option>
+        <option>Segreteria / ASO</option><option>Altro</option>
+      </select></div>
+    <label class="consent"><input type="checkbox" name="privacy" required> <span>Ho letto l'<a href="{{PRIVACY_URL}}" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei dati per accedere al corso. *</span></label>
+    <label class="consent"><input type="checkbox" name="marketing"> <span>Acconsento a ricevere comunicazioni commerciali da AlfaDocs (facoltativo).</span></label>
+    <p class="lead__error" id="lead-error" hidden></p>
+    <button class="btn btn--primary" type="submit" id="lead-submit">Guarda il video</button>
+  </form>
+</dialog>
+{{LEAD_CONFIG}}
 <script>
 /* Interazioni: riproduzione video al click e avanzamento salvato nel browser.
    I contenuti (titoli, descrizioni, FAQ) sono già nell'HTML per SEO e motori AI. */
@@ -273,6 +322,79 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
     card.querySelector(".facade").replaceWith(f);
   }
 
+  /* ---------- Form lead prima del video ---------- */
+  const CFG = JSON.parse(document.getElementById("lead-config").textContent);
+  const LEAD_KEY = "alfadocs-academy-lead";
+  const dlg = $("#lead"), form = $("#lead-form"), err = $("#lead-error");
+  let pending = null;
+  const hasLead = () => { if (CFG.chiedi_ogni_volta) return false; try { return !!localStorage.getItem(LEAD_KEY); } catch (e) { return false; } };
+
+  function requestPlay(card) {
+    if (hasLead()) return play(card);
+    pending = card;
+    err.hidden = true;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    setTimeout(() => $("#f-nome").focus(), 50);
+  }
+  const closeDlg = () => { dlg.close ? dlg.close() : dlg.removeAttribute("open"); pending = null; };
+  $("#lead-close").addEventListener("click", closeDlg);
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) closeDlg(); });
+
+  function utm() {
+    const p = new URLSearchParams(location.search), o = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"].forEach((k) => p.get(k) && (o[k] = p.get(k)));
+    return o;
+  }
+
+  async function sendLead(data) {
+    const jobs = [];
+    if (CFG.hubspot_portal_id && CFG.hubspot_form_guid) {
+      const fields = ["firstname", "lastname", "email", "phone", "company", "jobtitle"].map((name) => ({ name, value: data[name] }));
+      const hutk = (document.cookie.match(/hubspotutk=([^;]+)/) || [])[1];
+      jobs.push(fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${CFG.hubspot_portal_id}/${CFG.hubspot_form_guid}`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title, ...(hutk ? { hutk } : {}) },
+          legalConsentOptions: { consent: { consentToProcess: true, text: "Consenso al trattamento dei dati per accedere al corso",
+            communications: CFG.hubspot_subscription_type_id ? [{ value: data.marketing === "si",
+              subscriptionTypeId: Number(CFG.hubspot_subscription_type_id), text: "Comunicazioni commerciali AlfaDocs" }] : [] } } })
+      }).then((r) => { if (!r.ok) throw new Error("HubSpot " + r.status); }));
+    }
+    if (CFG.webhook_url) {
+      // form-urlencoded + no-cors: funziona con Make/Zapier senza configurare CORS
+      jobs.push(fetch(CFG.webhook_url, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) }));
+    }
+    if (!jobs.length) console.warn("[AlfaDocs Academy] Nessuna destinazione lead configurata in lezioni.json", data);
+    await Promise.all(jobs);
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      err.textContent = "Compila tutti i campi obbligatori (*) con dati validi.";
+      err.hidden = false;
+      form.reportValidity();
+      return;
+    }
+    const fd = Object.fromEntries(new FormData(form));
+    const data = { ...fd, privacy: "si", marketing: fd.marketing ? "si" : "no",
+      lezione: pending ? pending.querySelector("h3").textContent : "", pagina: location.href, data: new Date().toISOString(), ...utm() };
+    const btn = $("#lead-submit");
+    btn.disabled = true; btn.textContent = "Invio in corso…";
+    try {
+      await sendLead(data);
+      try { localStorage.setItem(LEAD_KEY, "1"); } catch (e) {}
+      (window.dataLayer = window.dataLayer || []).push({ event: "generate_lead", form: "academy_dentisti", lezione: data.lezione });
+      const card = pending;
+      form.reset(); closeDlg();
+      if (card) play(card);
+    } catch (e2) {
+      err.textContent = "Invio non riuscito. Controlla la connessione e riprova.";
+      err.hidden = false;
+    } finally {
+      btn.disabled = false; btn.textContent = "Guarda il video";
+    }
+  });
+
   function updateProgress() {
     const n = cards.filter((c) => done[c.dataset.id]).length;
     const pct = Math.round((n / cards.length) * 100);
@@ -289,7 +411,7 @@ em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:v
 
   cards.forEach((card) => {
     const fac = card.querySelector(".facade");
-    if (fac) fac.addEventListener("click", (e) => { e.preventDefault(); play(card); });
+    if (fac) fac.addEventListener("click", (e) => { e.preventDefault(); requestPlay(card); });
     const cb = card.querySelector("input");
     cb.checked = !!done[card.dataset.id];
     card.classList.toggle("done", cb.checked);

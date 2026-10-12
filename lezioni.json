@@ -1,32 +1,141 @@
 {
   "sito": {
     "url": "",
-    "titolo_pagina": "Marketing per studi medici e dentistici: corso gratuito | AlfaDocs Academy",
-    "meta_description": "Corso gratuito in 13 video lezioni di marketing per studi medici e dentistici: farsi trovare su Google, social, Meta Ads, raccolta contatti e fidelizzazione pazienti.",
-    "intro": "Un corso video gratuito in 13 lezioni per titolari di studi dentistici, studi medici e poliambulatori: come comunicare lo studio, farsi trovare su Google, usare social e Meta Ads, raccogliere contatti e fidelizzare i pazienti."
+    "titolo_pagina": "Marketing per dentisti: corso gratuito in 13 lezioni | AlfaDocs Academy",
+    "meta_description": "Corso gratuito di marketing per dentisti in 13 video lezioni: farsi trovare su Google, social e Meta Ads per lo studio dentistico, raccolta contatti e fidelizzazione dei pazienti.",
+    "intro": "Un corso video gratuito in 13 lezioni per dentisti e titolari di studi dentistici: come comunicare lo studio, farsi trovare su Google, usare social e Meta Ads, raccogliere contatti e fidelizzare i pazienti."
+  },
+  "lead": {
+    "_nota": "Dove inviare i lead. Compila HubSpot (portal_id + form_guid) oppure webhook_url (es. Make). Se restano vuoti i lead NON vengono salvati.",
+    "hubspot_portal_id": "",
+    "hubspot_form_guid": "",
+    "hubspot_subscription_type_id": "",
+    "webhook_url": "",
+    "privacy_url": "https://www.alfadocs.com/it-it/privacy",
+    "chiedi_ogni_volta": false,
+    "gtm_id": ""
   },
   "lezioni": [
-    { "id": "YN0ccSHU9pQ", "titolo": "Marketing vs comunicazione per lo studio medico", "descrizione": "La differenza tra fare marketing e fare comunicazione, e perché entrambi servono a uno studio medico o dentistico.", "data_pubblicazione": "", "durata": "" },
-    { "id": "W0yo2KOI7Ik", "titolo": "Quanto costa un'agenzia di marketing per uno studio", "descrizione": "Cosa c'è dietro il prezzo di un'agenzia e come valutare un preventivo di marketing per il tuo studio.", "data_pubblicazione": "", "durata": "" },
-    { "id": "lwE8pC2Z9is", "titolo": "L'ecosistema digitale dello studio", "descrizione": "Sito, social, email e advertising: come lavorano insieme per portare nuovi pazienti.", "data_pubblicazione": "", "durata": "" },
-    { "id": "egySHQD2kLo", "titolo": "La raccolta contatti dei pazienti", "descrizione": "Come trasformare chi scopre lo studio online in contatti da seguire nel tempo.", "data_pubblicazione": "", "durata": "" },
-    { "id": "YTBd9Xpy2u0", "titolo": "Social media per studi medici e dentistici", "descrizione": "Come usare i social in modo concreto e professionale per uno studio.", "data_pubblicazione": "", "durata": "" },
-    { "id": "eIqXXx93WxU", "titolo": "Meta Ads per studi medici: come funzionano davvero", "descrizione": "Come funzionano le campagne su Facebook e Instagram e cosa aspettarsi in termini di risultati.", "data_pubblicazione": "", "durata": "" },
-    { "id": "XLMX_RFqfK8", "titolo": "Canva e identità visiva dello studio", "descrizione": "Costruire un'immagine coerente e riconoscibile con strumenti alla portata di tutti.", "data_pubblicazione": "", "durata": "" },
-    { "id": "kPLDqYOPXQQ", "titolo": "ChatGPT per lo studio medico", "descrizione": "Usi pratici dell'intelligenza artificiale nella comunicazione e nel lavoro di tutti i giorni.", "data_pubblicazione": "", "durata": "" },
-    { "id": "CL1L7kuJYFw", "titolo": "Google Business Profile per lo studio (ex Google My Business)", "descrizione": "Farsi trovare dai pazienti nelle ricerche locali e su Google Maps.", "data_pubblicazione": "", "durata": "" },
-    { "id": "V1Ebas5VrWQ", "titolo": "Dalla ricerca su Google all'AI generativa", "descrizione": "Come cambia il modo in cui i pazienti cercano e scelgono uno studio, da Google agli assistenti AI.", "data_pubblicazione": "", "durata": "" },
-    { "id": "6n1xPX2LfcY", "titolo": "Community building per lo studio", "descrizione": "Creare una comunità di pazienti intorno allo studio e al suo team.", "data_pubblicazione": "", "durata": "" },
-    { "id": "L3tp2fR-g2Q", "titolo": "Automazione e fidelizzazione dei pazienti", "descrizione": "Automatizzare i processi di comunicazione e far tornare i pazienti nel tempo.", "data_pubblicazione": "", "durata": "" },
-    { "id": "EyTGqEh_aZA", "titolo": "La spina dorsale digitale dello studio", "descrizione": "Mettere insieme tutti i pezzi in un sistema digitale che funziona ogni giorno.", "data_pubblicazione": "", "durata": "" }
+    {
+      "id": "YN0ccSHU9pQ",
+      "titolo": "Marketing vs comunicazione per lo studio dentistico",
+      "descrizione": "La differenza tra fare marketing e fare comunicazione, e perché entrambi servono a uno studio dentistico.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "W0yo2KOI7Ik",
+      "titolo": "Quanto costa un'agenzia di marketing per dentisti",
+      "descrizione": "Cosa c'è dietro il prezzo di un'agenzia e come valutare un preventivo di marketing per il tuo studio dentistico.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "lwE8pC2Z9is",
+      "titolo": "L'ecosistema digitale dello studio dentistico",
+      "descrizione": "Sito, social, email e advertising: come lavorano insieme per portare nuovi pazienti in studio.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "egySHQD2kLo",
+      "titolo": "La raccolta contatti dei pazienti",
+      "descrizione": "Come trasformare chi scopre lo studio dentistico online in contatti da seguire nel tempo.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "YTBd9Xpy2u0",
+      "titolo": "Social media per dentisti",
+      "descrizione": "Come usare i social in modo concreto e professionale per uno studio dentistico.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "eIqXXx93WxU",
+      "titolo": "Meta Ads per dentisti: come funzionano davvero",
+      "descrizione": "Come funzionano le campagne su Facebook e Instagram per uno studio dentistico e cosa aspettarsi in termini di risultati.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "XLMX_RFqfK8",
+      "titolo": "Canva e identità visiva dello studio dentistico",
+      "descrizione": "Costruire un'immagine coerente e riconoscibile per lo studio con strumenti alla portata di tutti.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "kPLDqYOPXQQ",
+      "titolo": "ChatGPT per lo studio dentistico",
+      "descrizione": "Usi pratici dell'intelligenza artificiale nella comunicazione e nel lavoro quotidiano dello studio.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "CL1L7kuJYFw",
+      "titolo": "Google Business Profile per dentisti (ex Google My Business)",
+      "descrizione": "Farsi trovare dai pazienti che cercano un dentista nella propria zona, su Google e su Google Maps.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "V1Ebas5VrWQ",
+      "titolo": "Dalla ricerca su Google all'AI generativa",
+      "descrizione": "Come cambia il modo in cui i pazienti cercano e scelgono un dentista, da Google agli assistenti AI.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "6n1xPX2LfcY",
+      "titolo": "Community building per lo studio dentistico",
+      "descrizione": "Creare una comunità di pazienti intorno allo studio e al suo team.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "L3tp2fR-g2Q",
+      "titolo": "Automazione e fidelizzazione dei pazienti",
+      "descrizione": "Automatizzare la comunicazione con i pazienti e farli tornare per controlli e richiami.",
+      "data_pubblicazione": "",
+      "durata": ""
+    },
+    {
+      "id": "EyTGqEh_aZA",
+      "titolo": "La spina dorsale digitale dello studio dentistico",
+      "descrizione": "Mettere insieme tutti i pezzi in un sistema digitale che funziona ogni giorno in studio.",
+      "data_pubblicazione": "",
+      "durata": ""
+    }
   ],
   "faq": [
-    { "domanda": "Cos'è il corso di marketing per studi medici e dentistici di AlfaDocs Academy?", "risposta": "È un corso video gratuito in 13 lezioni che spiega a titolari e responsabili di studi medici e dentistici come comunicare lo studio, farsi trovare online, usare social e Meta Ads, raccogliere contatti e fidelizzare i pazienti." },
-    { "domanda": "A chi è rivolto il corso?", "risposta": "A titolari e direttori di studi dentistici, studi medici, poliambulatori, centri di fisioterapia e di medicina estetica, e a chi in studio si occupa di comunicazione e segreteria." },
-    { "domanda": "Il corso è gratuito?", "risposta": "Sì. Tutte le lezioni si guardano gratuitamente in questa pagina, senza registrazione, nell'ordine che preferisci." },
-    { "domanda": "Serve esperienza di marketing per seguirlo?", "risposta": "No. Le lezioni partono dalle basi, come la differenza tra marketing e comunicazione, e arrivano a strumenti pratici come Google Business Profile, Meta Ads, Canva e ChatGPT." },
-    { "domanda": "Uno studio medico o dentistico può fare pubblicità?", "risposta": "Sì, ma in Italia la pubblicità sanitaria deve essere informativa: la Legge 145/2018 (art. 1, comma 525) ammette solo informazioni funzionali alla sicurezza dei trattamenti ed esclude elementi promozionali o suggestivi. Vanno rispettati anche i codici deontologici: in caso di dubbi è bene confrontarsi con il proprio Ordine professionale." },
-    { "domanda": "Quali canali digitali sono più utili per trovare nuovi pazienti?", "risposta": "Per uno studio contano soprattutto la presenza nelle ricerche locali con Google Business Profile, un sito chiaro, i social usati in modo professionale e un sistema per raccogliere i contatti e seguire i pazienti nel tempo. Il corso li affronta uno per uno." },
-    { "domanda": "Come aiuta AlfaDocs a mettere in pratica il corso?", "risposta": "AlfaDocs è il software gestionale in cloud per studi medici e dentistici: riunisce agenda, cartella clinica, fatturazione e strumenti di marketing in un'unica piattaforma." }
+    {
+      "domanda": "Cos'è il corso di marketing per dentisti di AlfaDocs Academy?",
+      "risposta": "È un corso video gratuito in 13 lezioni che spiega a dentisti e titolari di studi dentistici come comunicare lo studio, farsi trovare online, usare social e Meta Ads, raccogliere contatti e fidelizzare i pazienti."
+    },
+    {
+      "domanda": "A chi è rivolto il corso?",
+      "risposta": "A dentisti titolari, direttori sanitari e responsabili di studi dentistici e cliniche odontoiatriche, e a chi in studio si occupa di comunicazione, segreteria e accoglienza dei pazienti."
+    },
+    {
+      "domanda": "Il corso è gratuito?",
+      "risposta": "Sì. Tutte le lezioni si guardano gratuitamente in questa pagina, senza registrazione, nell'ordine che preferisci."
+    },
+    {
+      "domanda": "Serve esperienza di marketing per seguirlo?",
+      "risposta": "No. Le lezioni partono dalle basi, come la differenza tra marketing e comunicazione, e arrivano a strumenti pratici come Google Business Profile, Meta Ads, Canva e ChatGPT."
+    },
+    {
+      "domanda": "Un dentista può fare pubblicità al proprio studio?",
+      "risposta": "Sì, ma in Italia la pubblicità sanitaria deve essere informativa: la Legge 145/2018 (art. 1, comma 525) ammette solo informazioni funzionali alla sicurezza dei trattamenti ed esclude elementi promozionali o suggestivi. Vanno rispettate anche le norme del Codice deontologico degli odontoiatri: in caso di dubbi è bene confrontarsi con la propria Commissione Albo Odontoiatri."
+    },
+    {
+      "domanda": "Come trova nuovi pazienti uno studio dentistico online?",
+      "risposta": "Contano soprattutto la presenza nelle ricerche locali con Google Business Profile, un sito chiaro, i social usati in modo professionale e un sistema per raccogliere i contatti e richiamare i pazienti nel tempo. Il corso li affronta uno per uno."
+    },
+    {
+      "domanda": "Come aiuta AlfaDocs a mettere in pratica il corso?",
+      "risposta": "AlfaDocs è il software gestionale in cloud per studi dentistici: riunisce agenda, cartella clinica, fatturazione e strumenti di marketing in un'unica piattaforma."
+    }
   ]
 }

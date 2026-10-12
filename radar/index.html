@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlfaDocs Radar – Le notizie per i dentisti, ogni mattina</title>
+<meta name="description" content="Le notizie del mondo odontoiatrico riassunte ogni mattina per i dentisti: normativa, mercato, studi scientifici, tecnologia ed eventi, con link alle fonti ufficiali.">
+<link rel="canonical" href="https://alfadocs-radar.vercel.app/">
+<link rel="alternate" type="application/rss+xml" title="AlfaDocs Radar" href="https://alfadocs-radar.vercel.app/feed.xml">
+<meta property="og:type" content="website"><meta property="og:locale" content="it_IT"><meta property="og:site_name" content="AlfaDocs Radar">
+<meta property="og:title" content="AlfaDocs Radar – Le notizie per i dentisti, ogni mattina"><meta property="og:description" content="Le notizie del mondo odontoiatrico riassunte ogni mattina per i dentisti: normativa, mercato, studi scientifici, tecnologia ed eventi, con link alle fonti ufficiali."><meta property="og:url" content="https://alfadocs-radar.vercel.app/">
+<meta name="theme-color" content="#6761e5">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Design token presi da alfadocs.com (template_theme.min.css) */
+:root{
+  --ad-primary:#6761e5; --ad-accent:#e040fb; --ad-hover:#b380f8;
+  --ad-navy:#292e53; --ad-deep-purple:#39357e; --ad-lilac-bg:#f0effc;
+  --ad-text-body:#545875; --ad-text-muted:#64748b; --ad-border:#e2e8f0;
+  --font-sans:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --font-serif:"Fraunces",ui-serif,Georgia,serif;
+  --radius-sm:8px; --radius-md:15px; --radius-lg:20px; --radius-xl:32px; --radius-section:45px;
+  --shadow-card:0 10px 30px rgba(0,0,0,.06); --shadow-hover:0 20px 40px rgba(103,97,229,.12);
+  --shadow-hero:0 35px 35px rgba(0,0,0,.15); --shadow-cta:0 10px 25px rgba(103,97,229,.2);
+  --ease-out:cubic-bezier(.16,1,.3,1); --container:1280px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ad-text-body);font-family:var(--font-sans);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--ad-primary);text-decoration:none}
+h1,h2,h3{color:var(--ad-navy);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0}
+em.serif{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--ad-primary);letter-spacing:-.01em}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--ad-primary);background:var(--ad-lilac-bg);padding:6px 14px;border-radius:999px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ad-accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px/1 var(--font-sans);padding:16px 26px;border-radius:999px;border:0;cursor:pointer;transition:background .25s,transform .25s var(--ease-out),box-shadow .25s}
+.btn--primary{background:var(--ad-primary);color:#fff;box-shadow:var(--shadow-cta)}
+.btn--primary:hover{background:var(--ad-hover);color:#fff;transform:translateY(-2px)}
+.btn--ghost{background:#fff;color:var(--ad-navy);border:1px solid var(--ad-border)}
+.btn--ghost:hover{background:var(--ad-lilac-bg)}
+.btn--light{background:#fff;color:var(--ad-deep-purple)}
+.btn--light:hover{background:var(--ad-lilac-bg)}
+:focus-visible{outline:2px solid var(--ad-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--ad-border)}
+.header__inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.header__brand{display:flex;align-items:center;gap:12px}
+.header__brand span{font-size:14px;font-weight:600;color:var(--ad-text-muted);padding-left:12px;border-left:1px solid var(--ad-border)}
+.header .btn{padding:12px 20px;font-size:15px}
+
+/* Hero */
+.hero{padding:80px 0 64px;background:radial-gradient(1000px 500px at 85% -10%,rgba(224,64,251,.10),transparent 60%),radial-gradient(900px 500px at 0% 0%,rgba(103,97,229,.12),transparent 60%)}
+.hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,60px);line-height:1.05;letter-spacing:-.03em;margin:20px 0}
+.hero p.lead{font-size:18px;max-width:560px;margin:0 0 32px}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:flex;flex-wrap:wrap;gap:32px;margin-top:40px}
+.stat strong{display:block;font-size:32px;color:var(--ad-navy);letter-spacing:-.02em}
+.stat span{font-size:14px;color:var(--ad-text-muted)}
+.hero__card{background:var(--ad-deep-purple);border-radius:var(--radius-xl);padding:12px;box-shadow:var(--shadow-hero);transform:rotate(1.5deg)}
+.hero__card .thumb{border-radius:24px;overflow:hidden;aspect-ratio:16/9;background:#1e1b4b center/cover no-repeat;position:relative}
+.hero__card .meta{color:#fff;padding:18px 12px 8px}
+.hero__card .meta small{color:rgba(255,255,255,.7)}
+.hero__card .meta b{display:block;font-size:18px;margin-top:4px}
+
+/* Corso */
+.course{padding:80px 0}
+.section-head{max-width:720px;margin-bottom:40px}
+.section-head h2{font-size:clamp(32px,4.5vw,54px);margin:16px 0 12px}
+.section-head p{font-size:18px;margin:0}
+.course__bar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--ad-lilac-bg);border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:32px}
+.course__bar b{color:var(--ad-navy)}
+.progress{flex:1;min-width:160px;height:8px;background:#fff;border-radius:999px;overflow:hidden}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--ad-primary),var(--ad-accent));transition:width .5s var(--ease-out)}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.card{background:#fff;border:1px solid var(--ad-border);border-radius:var(--radius-xl);padding:12px;box-shadow:var(--shadow-card);transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column;height:100%}
+.card:hover{box-shadow:var(--shadow-hover)}
+.card.done{border-color:var(--ad-hover)}
+.video{position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:var(--ad-navy)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.facade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:var(--ad-navy)}
+.facade img{width:100%;height:100%;object-fit:cover}
+.facade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(41,46,83,0) 40%,rgba(41,46,83,.55))}
+.play{position:absolute;z-index:1;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--ad-primary);box-shadow:0 10px 30px rgba(103,97,229,.5);display:grid;place-items:center;transition:transform .25s var(--ease-out),background .25s}
+.play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+.facade:hover .play{transform:scale(1.08);background:var(--ad-accent)}
+.badge{position:absolute;z-index:1;left:14px;top:14px;background:#fff;color:var(--ad-primary);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px}
+.placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;padding:24px;background:linear-gradient(135deg,var(--ad-deep-purple),var(--ad-primary))}
+.placeholder b{display:block;font-size:18px;margin-bottom:4px}
+.placeholder span{color:rgba(255,255,255,.75);font-size:14px}
+.card__body{padding:20px 12px 8px;display:flex;flex-direction:column;flex:1}
+.card__tag{font-size:14px;font-weight:600;color:var(--ad-primary)}
+.card__body h3{font-size:22px;margin:6px 0 8px}
+.card__body p{margin:0 0 16px;flex:1}
+.check{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--ad-navy);cursor:pointer;user-select:none}
+.check input{width:20px;height:20px;accent-color:var(--ad-primary);cursor:pointer}
+.card__body ul{margin:0 0 16px;padding-left:18px}
+.card__body li{margin:2px 0}
+
+/* A chi è rivolto */
+.audience{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;padding:0;list-style:none}
+.audience li{background:#fff;border:1px solid var(--ad-border);border-radius:999px;padding:8px 16px;font-weight:600;color:var(--ad-navy);font-size:15px}
+
+/* FAQ */
+.faq{padding:96px 0 0}
+.faq__list{display:grid;gap:12px;max-width:880px}
+.faq details{background:#fff;border:1px solid var(--ad-border);border-radius:var(--radius-lg);padding:0 24px;transition:box-shadow .25s}
+.faq details[open]{box-shadow:var(--shadow-card);border-color:var(--ad-hover)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 32px 20px 0;font-weight:600;font-size:18px;color:var(--ad-navy);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:24px;color:var(--ad-primary)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 20px}
+
+
+/* Form lead */
+dialog.lead{border:0;padding:0;border-radius:var(--radius-xl);max-width:560px;width:calc(100% - 32px);box-shadow:var(--shadow-hero);color:var(--ad-text-body)}
+dialog.lead::backdrop{background:rgba(41,46,83,.6);backdrop-filter:blur(4px)}
+.lead__head{background:var(--ad-deep-purple);color:rgba(255,255,255,.85);padding:28px 32px 24px;position:relative}
+.lead__head .eyebrow{background:rgba(255,255,255,.12);color:#fff}
+.lead__head h2{color:#fff;font-size:26px;margin:14px 0 6px}
+.lead__head p{margin:0}
+.lead__close{background:none;border:0;cursor:pointer;font-family:inherit;position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;color:#fff;font-size:24px;line-height:1}
+.lead__close:hover{background:rgba(255,255,255,.12)}
+.lead form{padding:24px 32px 28px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:6px}
+.field--full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:600;color:var(--ad-navy)}
+.field input,.field select{font:inherit;color:var(--ad-navy);border:1px solid var(--ad-border);border-radius:var(--radius-sm);padding:12px 14px;background:#fff;width:100%}
+.field input:focus,.field select:focus{outline:2px solid var(--ad-primary);outline-offset:0;border-color:var(--ad-primary)}
+.consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4}
+.consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--ad-primary);flex:none}
+.lead .btn{grid-column:1/-1;width:100%}
+.lead__error{grid-column:1/-1;margin:0;color:#c0262d;font-size:14px;font-weight:600}
+@media (max-width:640px){.lead form{grid-template-columns:1fr;padding:20px}.lead__head{padding:24px 20px 20px}}
+
+/* Pillars dark */
+.pillars{margin:0 16px;background:var(--ad-deep-purple);border-radius:var(--radius-section);padding:80px 0;color:rgba(255,255,255,.8)}
+.pillars h2{color:#fff}
+.pillars .section-head p{color:rgba(255,255,255,.8)}
+.pillars em.serif{color:var(--ad-hover)}
+.pillars .eyebrow{background:rgba(255,255,255,.1);color:#fff}
+.pillars__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pillar{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:28px}
+.pillar .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(224,64,251,.18);color:#fff;font-size:22px;margin-bottom:20px}
+.pillar h3{color:#fff;font-size:22px;margin-bottom:8px}
+.pillar p{margin:0}
+
+/* CTA */
+.cta{padding:96px 0}
+.cta__box{background:var(--ad-lilac-bg);border-radius:var(--radius-section);padding:64px 48px;text-align:center}
+.cta__box h2{font-size:clamp(30px,4.5vw,48px);margin:16px auto;max-width:760px}
+.cta__box p{font-size:18px;max-width:600px;margin:0 auto 32px}
+.footer{border-top:1px solid var(--ad-border);padding:32px 0;font-size:14px;color:var(--ad-text-muted)}
+.footer .container{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+
+@media (max-width:1024px){
+  .hero__grid{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .hero__card{transform:none;max-width:560px}
+  .pillars__grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .container{padding:0 16px}
+  .hero{padding:48px 0 40px}
+  .header__brand span{display:none}
+  .course{padding:56px 0}
+  .pillars{margin:0 8px;padding:56px 0;border-radius:32px}
+  .cta{padding:56px 0}
+  .cta__box{padding:40px 20px;border-radius:32px}
+  .play{width:60px;height:60px;margin:-30px 0 0 -30px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* Radar */
+.hero--radar{padding:64px 0 40px}
+.hero--radar h1{font-size:clamp(38px,5.5vw,58px)}
+.hero__side{background:#fff;border:1px solid var(--ad-border);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-card)}
+.hero__side h2{font-size:24px;margin:12px 0 8px}
+.hero__side p{margin:0 0 20px}
+.hero__side ul{margin:0 0 22px;padding:0;list-style:none;display:grid;gap:8px}
+.hero__side li{display:flex;gap:10px;color:var(--ad-navy);font-weight:500}
+.hero__side li::before{content:"✓";color:var(--ad-primary);font-weight:700}
+.hero__side .btn{width:100%}
+.today{font-size:15px;color:var(--ad-text-muted);margin-top:24px}
+.feed{padding:24px 0 80px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;position:sticky;top:72px;z-index:5;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);padding:12px 0}
+.chip{font:600 15px var(--font-sans);border:1px solid var(--ad-border);background:#fff;color:var(--ad-navy);padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--ad-hover)}
+.chip[aria-pressed="true"]{background:var(--ad-primary);border-color:var(--ad-primary);color:#fff}
+.chip span{opacity:.6;margin-left:4px}
+.news{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.post{background:#fff;border:1px solid var(--ad-border);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:14px;transition:box-shadow .25s}
+.post:hover{box-shadow:var(--shadow-hover)}
+.post[hidden]{display:none}
+.post__meta{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px;color:var(--ad-text-muted)}
+.cat{font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;background:var(--ad-lilac-bg);color:var(--ad-primary)}
+.cat--Normativa{background:#eef2ff;color:#4338ca}
+.cat--Mercato{background:#fdf2f8;color:#a21caf}
+.cat--Scientifica{background:#ecfdf5;color:#047857}
+.cat--Tecnologia{background:#eff6ff;color:#1d4ed8}
+.cat--Professione{background:#fff7ed;color:#c2410c}
+.cat--Eventi{background:#f0effc;color:#39357e}
+.post h2{font-size:22px;line-height:1.2;margin:0}
+.post p{margin:0}
+.impact{position:relative;background:var(--ad-lilac-bg);border-radius:var(--radius-md);padding:16px 18px}
+.impact b{display:block;color:var(--ad-deep-purple);font-size:14px;margin-bottom:4px}
+.impact__text{transition:filter .3s}
+.post.locked .impact__text{filter:blur(5px);user-select:none}
+.unlock{display:none;position:absolute;inset:0;align-items:center;justify-content:center;border-radius:var(--radius-md);background:rgba(240,239,252,.35)}
+.post.locked .unlock{display:flex}
+.unlock .btn{padding:11px 18px;font-size:14px}
+.source{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px}
+.source::after{content:"↗"}
+.note{margin-top:32px;font-size:14px;color:var(--ad-text-muted);max-width:820px}
+@media (max-width:1024px){.news{grid-template-columns:1fr}}
+@media (max-width:640px){.post{padding:22px}.filters{top:64px;flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 20px;padding:12px 16px}.chip{flex:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.alfadocs.com/#organization", "name": "AlfaDocs", "url": "https://www.alfadocs.com/", "logo": "https://www.alfadocs.com/hubfs/Alfadocs%20Rebrand/Alfadocs_Logo_Main.svg"}, {"@type": "Blog", "name": "AlfaDocs Radar", "url": "https://alfadocs-radar.vercel.app/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}, "blogPost": [{"@type": "BlogPosting", "headline": "Congresso Nazionale AIO a Lecce dal 29 al 31 ottobre", "description": "Il 33° Congresso Nazionale dell'Associazione Italiana Odontoiatri si terrà a Lecce il 29, 30 e 31 ottobre 2026, con al centro innovazione, giovani professionisti e cura dei pazienti con bisogni speciali.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#congresso-aio-lecce-2026", "articleSection": "Eventi", "isBasedOn": "https://www.aio.it/aio-conto-alla-rovescia-per-il-33-congresso-nazionale-innovazione-giovani-e-pazienti-speciali-al-centro/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Nuovi LEA: per AIO l'odontoiatria resta ai margini del Servizio sanitario", "description": "Con l'aggiornamento dei Livelli Essenziali di Assistenza le cure dentali nel SSN restano rivolte soprattutto a bambini e ragazzi, persone vulnerabili, urgenze e diagnosi precoce dei tumori del cavo orale. AIO chiede requisiti di accesso più uniformi tra Regioni, tariffe che coprano i costi reali e collaborazioni trasparenti con gli studi privati.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#nuovi-lea-odontoiatria", "articleSection": "Normativa", "isBasedOn": "https://www.aio.it/nuovi-livelli-essenziali-di-assistenza-aio-il-diritto-alla-salute-comprende-anche-le-cure-odontoiatriche/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Rapporto GIMBE: le famiglie pagano di tasca propria 42,4 miliardi di spesa sanitaria", "description": "Il 9° Rapporto GIMBE sul Servizio Sanitario Nazionale stima in 42,4 miliardi di euro la spesa sanitaria sostenuta direttamente dalle famiglie nel 2025, 18,8 miliardi di \"tagli invisibili\" negli ultimi quattro anni e un divario di 32,3 miliardi tra finanziamento e spesa prevista nel 2027-2029, con forti differenze tra territori.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#rapporto-gimbe-spesa-sanitaria-famiglie", "articleSection": "Mercato", "isBasedOn": "https://portale.fnomceo.it/gimbe-presentato-il-9-rapporto-sul-servizio-sanitario-nazionale/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Microbiota orale: la prevenzione punta sull'equilibrio, non solo sui batteri", "description": "Carie e malattia parodontale sono sempre più lette come disbiosi, cioè come alterazione dell'equilibrio dell'ecosistema microbico della bocca. Prevenire significa quindi mantenere un ambiente orale compatibile con la salute. La ricerca indaga anche i legami tra microbiota orale, infiammazione e condizioni generali. Il tema è al centro del 3° Congresso nazionale AIMO a Modena.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#microbiota-orale-prevenzione", "articleSection": "Scientifica", "isBasedOn": "https://www.aio.it/la-salute-orale-passa-anche-dal-microbiota-una-nuova-frontiera-della-prevenzione-ne-parla-a-modena-il-3-congresso-nazionale-aimo/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Impianti nel mascellare anteriore: con il carico immediato meno dolore e gonfiore", "description": "Uno studio clinico randomizzato su 16 pazienti ha confrontato carico immediato e carico differito di impianti nella zona anteriore e premolare del mascellare. A sei mesi stabilità implantare e densità ossea sono risultate simili, mentre il gruppo a carico immediato ha avuto meno dolore ed edema nei primi giorni dopo l'intervento.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#carico-immediato-impianti-mascellare", "articleSection": "Scientifica", "isBasedOn": "https://pubmed.ncbi.nlm.nih.gov/42834394/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Turismo dentale: AIO chiede trasparenza sul costo reale delle cure all'estero", "description": "Per AIO il turismo odontoiatrico non è solo una questione di prezzo: i problemi emergono quando il paziente rientra in Italia con complicanze e il rapporto con chi lo ha curato si interrompe. L'associazione chiede trasparenza sui costi complessivi, informazioni verificabili su professionisti e strutture e tracciabilità di materiali e documentazione.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#turismo-dentale-trasparenza-costi", "articleSection": "Mercato", "isBasedOn": "https://www.aio.it/turismo-odontoiatrico-aio-la-tutela-del-paziente-viene-prima-di-tutto/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Digital Omnibus: i dentisti europei chiedono di non indebolire la privacy dei pazienti", "description": "Il Council of European Dentists, di cui AIO fa parte, ha aderito a una dichiarazione congiunta delle principali rappresentanze sanitarie europee: il pacchetto Digital Omnibus non deve ridurre la protezione dei dati personali dei pazienti. Anamnesi, radiografie, CBCT, fotografie e scansioni intraorali sono dati sanitari a tutti gli effetti.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#digital-omnibus-privacy-dati-sanitari", "articleSection": "Tecnologia e privacy", "isBasedOn": "https://www.aio.it/aio-sostiene-e-rilancia-in-italia-la-posizione-europea-per-una-digitalizzazione-della-sanita-che-favorisca-linnovazione-senza-indebolire-la-tutela-dei-pazienti/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Sensibilità da sbiancamento: cosa funziona davvero secondo 18 revisioni sistematiche", "description": "Una umbrella review su 18 revisioni sistematiche conclude che la sensibilità dopo lo sbiancamento è frequente ma di solito transitoria. Gli antinfiammatori presi per prevenirla non mostrano benefici rilevanti; i prodotti al nitrato di potassio danno un sollievo modesto; per fluoro e calcio le prove sono incerte; la fotobiomodulazione è promettente ma con protocolli molto diversi tra loro.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#sensibilita-sbiancamento-umbrella-review", "articleSection": "Scientifica", "isBasedOn": "https://pubmed.ncbi.nlm.nih.gov/42835010/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Polizza sanitaria per il personale della scuola: cosa cambia per i dentisti", "description": "Dal 10 settembre è operativa l'assistenza sanitaria integrativa per il personale della scuola e del Ministero dell'Istruzione e del Merito, che comprende anche alcune prestazioni odontoiatriche. AIO la vede come un'opportunità per l'accesso alle cure, ma chiede che resti garantita la libera scelta del dentista.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#polizza-sanitaria-scuola-dentisti", "articleSection": "Mercato", "isBasedOn": "https://www.aio.it/welfare-e-odontoiatria-aio-piu-accesso-alle-cure-senza-rinunciare-alla-liberta-di-scelta/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Odontoiatria sempre più al femminile: quasi una dentista su due tra gli under 44", "description": "Nel 2024 le odontoiatre erano il 29,3% degli iscritti all'Albo, ma il 44,9% tra gli under 44; tra i nuovi iscritti del 2023 c'era una sostanziale parità. Per AIO la trasformazione riguarda tutta la professione: organizzazione degli studi, conciliazione con la vita privata, ricambio generazionale.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#odontoiatria-al-femminile", "articleSection": "Professione", "isBasedOn": "https://www.aio.it/lodontoiatria-cambia-volto-una-professione-sempre-piu-al-femminile-guarda-al-futuro/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}, {"@type": "BlogPosting", "headline": "Assunzioni in studio: le nuove regole su TFR e trasparenza retributiva", "description": "La Legge 30 dicembre 2025, n. 199 introduce nuovi obblighi per i datori di lavoro, studi dentistici compresi: informare i dipendenti su TFR e previdenza complementare, comunicare la retribuzione o la fascia retributiva prima dell'assunzione e applicare criteri retributivi oggettivi e trasparenti.", "datePublished": "2026-10-12", "url": "https://alfadocs-radar.vercel.app/#assunzioni-tfr-trasparenza-retributiva", "articleSection": "Normativa", "isBasedOn": "https://www.aio.it/studi-odontoiatrici-che-cosa-cambia-dal-2026-una-guida-rapida-per-il-titolare-di-studio/", "inLanguage": "it", "publisher": {"@id": "https://www.alfadocs.com/#organization"}}]}]}</script>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="https://www.alfadocs.com/" aria-label="AlfaDocs"><img src="https://www.alfadocs.com/hubfs/Alfadocs%20Rebrand/Alfadocs_Logo_Main.svg" alt="AlfaDocs" width="140" height="32"><span>Radar</span></a>
+    <button class="btn btn--primary" type="button" data-open-lead>Iscriviti gratis</button>
+  </div>
+</header>
+<main>
+  <section class="hero hero--radar">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">AlfaDocs Radar · Notizie per dentisti</span>
+        <h1>Le notizie che contano per il tuo <em class="serif">studio dentistico</em>, ogni mattina</h1>
+        <p class="lead">Normativa, mercato, studi scientifici, tecnologia ed eventi: selezioniamo le notizie del settore odontoiatrico, le riassumiamo in poche righe e ti spieghiamo cosa cambiano per il tuo studio. Sempre con il link alla fonte ufficiale.</p>
+        <p class="today">Aggiornato il 12 ottobre 2026 · 11 notizie</p>
+      </div>
+      <aside class="hero__side">
+        <span class="eyebrow">Gratis</span>
+        <h2>Ricevi il Radar ogni mattina</h2>
+        <p>Le notizie del giorno nella tua email alle 6:30, in 3 minuti di lettura.</p>
+        <ul><li>Solo notizie verificate, con fonte</li><li>Cosa significano per il tuo studio</li><li>Accesso a tutti gli approfondimenti</li></ul>
+        <button class="btn btn--primary" type="button" data-open-lead>Iscriviti gratis</button>
+      </aside>
+    </div>
+  </section>
+  <section class="feed" aria-label="Notizie">
+    <div class="container">
+      <div class="filters" role="toolbar" aria-label="Filtra per categoria"><button class="chip" type="button" data-filter="" aria-pressed="true">Tutte<span>11</span></button><button class="chip" type="button" data-filter="Normativa" aria-pressed="false">Normativa<span>2</span></button><button class="chip" type="button" data-filter="Mercato" aria-pressed="false">Mercato<span>3</span></button><button class="chip" type="button" data-filter="Scientifica" aria-pressed="false">Scientifica<span>3</span></button><button class="chip" type="button" data-filter="Tecnologia e privacy" aria-pressed="false">Tecnologia e privacy<span>1</span></button><button class="chip" type="button" data-filter="Professione" aria-pressed="false">Professione<span>1</span></button><button class="chip" type="button" data-filter="Eventi" aria-pressed="false">Eventi<span>1</span></button></div>
+      <ol class="news" id="news">
+      <li class="post" id="congresso-aio-lecce-2026" data-cat="Eventi">
+        <div class="post__meta"><span class="cat cat--Eventi">Eventi</span><time datetime="2026-10-10">10 ottobre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Congresso Nazionale AIO a Lecce dal 29 al 31 ottobre</h2>
+        <p>Il 33° Congresso Nazionale dell&#x27;Associazione Italiana Odontoiatri si terrà a Lecce il 29, 30 e 31 ottobre 2026, con al centro innovazione, giovani professionisti e cura dei pazienti con bisogni speciali.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Un&#x27;occasione di aggiornamento e confronto con i colleghi: se ti interessa, conviene verificare programma e iscrizioni sul sito di AIO.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/aio-conto-alla-rovescia-per-il-33-congresso-nazionale-innovazione-giovani-e-pazienti-speciali-al-centro/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="nuovi-lea-odontoiatria" data-cat="Normativa">
+        <div class="post__meta"><span class="cat cat--Normativa">Normativa</span><time datetime="2026-10-08">8 ottobre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Nuovi LEA: per AIO l&#x27;odontoiatria resta ai margini del Servizio sanitario</h2>
+        <p>Con l&#x27;aggiornamento dei Livelli Essenziali di Assistenza le cure dentali nel SSN restano rivolte soprattutto a bambini e ragazzi, persone vulnerabili, urgenze e diagnosi precoce dei tumori del cavo orale. AIO chiede requisiti di accesso più uniformi tra Regioni, tariffe che coprano i costi reali e collaborazioni trasparenti con gli studi privati.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Per la gran parte dei pazienti le cure restano a pagamento: preventivi chiari e soluzioni di pagamento sostenibili continuano a fare la differenza. Da seguire le possibili forme di collaborazione tra studi e SSN proposte da AIO.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/nuovi-livelli-essenziali-di-assistenza-aio-il-diritto-alla-salute-comprende-anche-le-cure-odontoiatriche/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="rapporto-gimbe-spesa-sanitaria-famiglie" data-cat="Mercato">
+        <div class="post__meta"><span class="cat cat--Mercato">Mercato</span><time datetime="2026-10-07">7 ottobre 2026</time><span>· FNOMCeO – Rapporto GIMBE</span></div>
+        <h2>Rapporto GIMBE: le famiglie pagano di tasca propria 42,4 miliardi di spesa sanitaria</h2>
+        <p>Il 9° Rapporto GIMBE sul Servizio Sanitario Nazionale stima in 42,4 miliardi di euro la spesa sanitaria sostenuta direttamente dalle famiglie nel 2025, 18,8 miliardi di &quot;tagli invisibili&quot; negli ultimi quattro anni e un divario di 32,3 miliardi tra finanziamento e spesa prevista nel 2027-2029, con forti differenze tra territori.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Con una spesa privata così alta i pazienti confrontano di più prezzo e valore. Piani di cura spiegati bene, pagamenti dilazionati e richiami puntuali aiutano a non perdere pazienti per ragioni economiche.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://portale.fnomceo.it/gimbe-presentato-il-9-rapporto-sul-servizio-sanitario-nazionale/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="microbiota-orale-prevenzione" data-cat="Scientifica">
+        <div class="post__meta"><span class="cat cat--Scientifica">Scientifica</span><time datetime="2026-10-02">2 ottobre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Microbiota orale: la prevenzione punta sull&#x27;equilibrio, non solo sui batteri</h2>
+        <p>Carie e malattia parodontale sono sempre più lette come disbiosi, cioè come alterazione dell&#x27;equilibrio dell&#x27;ecosistema microbico della bocca. Prevenire significa quindi mantenere un ambiente orale compatibile con la salute. La ricerca indaga anche i legami tra microbiota orale, infiammazione e condizioni generali. Il tema è al centro del 3° Congresso nazionale AIMO a Modena.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Un argomento efficace con i pazienti: spiegare la prevenzione come equilibrio da mantenere rafforza il valore delle sedute di igiene e dei richiami periodici.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/la-salute-orale-passa-anche-dal-microbiota-una-nuova-frontiera-della-prevenzione-ne-parla-a-modena-il-3-congresso-nazionale-aimo/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="carico-immediato-impianti-mascellare" data-cat="Scientifica">
+        <div class="post__meta"><span class="cat cat--Scientifica">Scientifica</span><time datetime="2026-10-02">2 ottobre 2026</time><span>· BMC Oral Health (PubMed)</span></div>
+        <h2>Impianti nel mascellare anteriore: con il carico immediato meno dolore e gonfiore</h2>
+        <p>Uno studio clinico randomizzato su 16 pazienti ha confrontato carico immediato e carico differito di impianti nella zona anteriore e premolare del mascellare. A sei mesi stabilità implantare e densità ossea sono risultate simili, mentre il gruppo a carico immediato ha avuto meno dolore ed edema nei primi giorni dopo l&#x27;intervento.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Un dato utile nel colloquio con il paziente sul comfort post-operatorio, ma il campione è molto piccolo: va letto come conferma preliminare, non come nuova indicazione clinica.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://pubmed.ncbi.nlm.nih.gov/42834394/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="turismo-dentale-trasparenza-costi" data-cat="Mercato">
+        <div class="post__meta"><span class="cat cat--Mercato">Mercato</span><time datetime="2026-09-23">23 settembre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Turismo dentale: AIO chiede trasparenza sul costo reale delle cure all&#x27;estero</h2>
+        <p>Per AIO il turismo odontoiatrico non è solo una questione di prezzo: i problemi emergono quando il paziente rientra in Italia con complicanze e il rapporto con chi lo ha curato si interrompe. L&#x27;associazione chiede trasparenza sui costi complessivi, informazioni verificabili su professionisti e strutture e tracciabilità di materiali e documentazione.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Racconta il valore del percorso completo: diagnosi, chirurgia, protesi, controlli e gestione delle complicanze. Un preventivo che spiega cosa include è la risposta migliore al confronto sul solo prezzo.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/turismo-odontoiatrico-aio-la-tutela-del-paziente-viene-prima-di-tutto/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="digital-omnibus-privacy-dati-sanitari" data-cat="Tecnologia e privacy">
+        <div class="post__meta"><span class="cat cat--Tecnologia">Tecnologia e privacy</span><time datetime="2026-09-23">23 settembre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Digital Omnibus: i dentisti europei chiedono di non indebolire la privacy dei pazienti</h2>
+        <p>Il Council of European Dentists, di cui AIO fa parte, ha aderito a una dichiarazione congiunta delle principali rappresentanze sanitarie europee: il pacchetto Digital Omnibus non deve ridurre la protezione dei dati personali dei pazienti. Anamnesi, radiografie, CBCT, fotografie e scansioni intraorali sono dati sanitari a tutti gli effetti.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Cartelle digitali, scanner, cloud e intelligenza artificiale sono ormai parte dello studio: verifica che software e fornitori garantiscano sicurezza dei dati e conformità al GDPR.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/aio-sostiene-e-rilancia-in-italia-la-posizione-europea-per-una-digitalizzazione-della-sanita-che-favorisca-linnovazione-senza-indebolire-la-tutela-dei-pazienti/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="sensibilita-sbiancamento-umbrella-review" data-cat="Scientifica">
+        <div class="post__meta"><span class="cat cat--Scientifica">Scientifica</span><time datetime="2026-09-21">21 settembre 2026</time><span>· Frontiers in Oral Health (PubMed)</span></div>
+        <h2>Sensibilità da sbiancamento: cosa funziona davvero secondo 18 revisioni sistematiche</h2>
+        <p>Una umbrella review su 18 revisioni sistematiche conclude che la sensibilità dopo lo sbiancamento è frequente ma di solito transitoria. Gli antinfiammatori presi per prevenirla non mostrano benefici rilevanti; i prodotti al nitrato di potassio danno un sollievo modesto; per fluoro e calcio le prove sono incerte; la fotobiomodulazione è promettente ma con protocolli molto diversi tra loro.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Informare il paziente che la sensibilità è comune e passeggera e preferire prodotti al nitrato di potassio è più supportato dalle prove rispetto alla prescrizione preventiva di antinfiammatori.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://pubmed.ncbi.nlm.nih.gov/42835010/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="polizza-sanitaria-scuola-dentisti" data-cat="Mercato">
+        <div class="post__meta"><span class="cat cat--Mercato">Mercato</span><time datetime="2026-09-18">18 settembre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Polizza sanitaria per il personale della scuola: cosa cambia per i dentisti</h2>
+        <p>Dal 10 settembre è operativa l&#x27;assistenza sanitaria integrativa per il personale della scuola e del Ministero dell&#x27;Istruzione e del Merito, che comprende anche alcune prestazioni odontoiatriche. AIO la vede come un&#x27;opportunità per l&#x27;accesso alle cure, ma chiede che resti garantita la libera scelta del dentista.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Potrebbero arrivare pazienti con questa copertura: informati su rimborsi e convenzioni e prepara la segreteria a rispondere. Il nodo da seguire è la libertà del paziente di scegliere il proprio dentista.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/welfare-e-odontoiatria-aio-piu-accesso-alle-cure-senza-rinunciare-alla-liberta-di-scelta/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="odontoiatria-al-femminile" data-cat="Professione">
+        <div class="post__meta"><span class="cat cat--Professione">Professione</span><time datetime="2026-09-14">14 settembre 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Odontoiatria sempre più al femminile: quasi una dentista su due tra gli under 44</h2>
+        <p>Nel 2024 le odontoiatre erano il 29,3% degli iscritti all&#x27;Albo, ma il 44,9% tra gli under 44; tra i nuovi iscritti del 2023 c&#x27;era una sostanziale parità. Per AIO la trasformazione riguarda tutta la professione: organizzazione degli studi, conciliazione con la vita privata, ricambio generazionale.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Flessibilità e buona organizzazione diventano leve per attrarre e trattenere giovani professionisti: agende condivise, turni chiari e processi digitali rendono lo studio più facile da gestire.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/lodontoiatria-cambia-volto-una-professione-sempre-piu-al-femminile-guarda-al-futuro/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      <li class="post" id="assunzioni-tfr-trasparenza-retributiva" data-cat="Normativa">
+        <div class="post__meta"><span class="cat cat--Normativa">Normativa</span><time datetime="2026-08-27">27 agosto 2026</time><span>· AIO – Associazione Italiana Odontoiatri</span></div>
+        <h2>Assunzioni in studio: le nuove regole su TFR e trasparenza retributiva</h2>
+        <p>La Legge 30 dicembre 2025, n. 199 introduce nuovi obblighi per i datori di lavoro, studi dentistici compresi: informare i dipendenti su TFR e previdenza complementare, comunicare la retribuzione o la fascia retributiva prima dell&#x27;assunzione e applicare criteri retributivi oggettivi e trasparenti.</p>
+        <div class="impact"><b>Cosa significa per il tuo studio</b><p class="impact__text">Se assumi segretaria, ASO o igienista: indica la fascia retributiva già nell&#x27;annuncio, non chiedere al candidato lo stipendio precedente, consegna l&#x27;informativa sul TFR e conserva le scelte del dipendente. Per i collaboratori a partita IVA verifica che il rapporto sia davvero autonomo.</p>
+          <div class="unlock"><button class="btn btn--primary" type="button" data-open-lead>Sblocca gratis</button></div></div>
+        <a class="source" href="https://www.aio.it/studi-odontoiatrici-che-cosa-cambia-dal-2026-una-guida-rapida-per-il-titolare-di-studio/" target="_blank" rel="noopener">Leggi la fonte ufficiale</a>
+      </li>
+      </ol>
+      <p class="note">Le notizie sono riassunte da fonti pubbliche e non sostituiscono i testi originali: fa sempre fede la fonte ufficiale indicata. I contenuti scientifici hanno scopo informativo e non costituiscono indicazioni cliniche.</p>
+    </div>
+  </section>
+  <section class="cta">
+    <div class="container"><div class="cta__box">
+      <span class="eyebrow">Passa all'azione</span>
+      <h2>Gestisci lo studio con <em class="serif">AlfaDocs</em></h2>
+      <p>Il software gestionale in cloud per studi dentistici: agenda, cartella clinica, fatturazione e marketing in un'unica piattaforma.</p>
+      <a class="btn btn--primary" href="https://www.alfadocs.com/">Scopri AlfaDocs</a>
+    </div></div>
+  </section>
+</main>
+<footer class="footer"><div class="container"><img src="https://www.alfadocs.com/hubfs/Alfadocs%20Rebrand/Alfadocs_Logo_Main.svg" alt="AlfaDocs" width="110" height="25"><span>© 2026 AlfaDocs · Radar · <a href="feed.xml">Feed RSS</a></span></div></footer>
+
+<dialog class="lead" id="lead" aria-labelledby="lead-title">
+  <div class="lead__head">
+    <button class="lead__close" type="button" id="lead-close" aria-label="Chiudi">×</button>
+    <span class="eyebrow">Gratis per i dentisti</span>
+    <h2 id="lead-title">Ricevi AlfaDocs Radar ogni mattina</h2>
+    <p>Sblocca tutti gli approfondimenti e ricevi le notizie del giorno via email.</p>
+  </div>
+  <form id="lead-form" novalidate>
+    <div class="field"><label for="f-nome">Nome *</label><input id="f-nome" name="firstname" autocomplete="given-name" required></div>
+    <div class="field"><label for="f-cognome">Cognome *</label><input id="f-cognome" name="lastname" autocomplete="family-name" required></div>
+    <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="f-tel">Telefono</label><input id="f-tel" name="phone" type="tel" autocomplete="tel" pattern="[0-9+ ()\-]{6,}"></div>
+    <div class="field"><label for="f-studio">Nome dello studio *</label><input id="f-studio" name="company" autocomplete="organization" required></div>
+    <div class="field"><label for="f-ruolo">Ruolo *</label>
+      <select id="f-ruolo" name="jobtitle" required><option value="">Seleziona</option><option>Dentista titolare</option><option>Dentista collaboratore</option><option>Direttore sanitario</option><option>Segreteria / ASO</option><option>Altro</option></select></div>
+    <label class="consent"><input type="checkbox" name="privacy" required> <span>Ho letto l'<a href="https://www.alfadocs.com/it-it/privacy" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei dati per ricevere AlfaDocs Radar. *</span></label>
+    <label class="consent"><input type="checkbox" name="marketing"> <span>Acconsento a ricevere comunicazioni commerciali da AlfaDocs (facoltativo).</span></label>
+    <p class="lead__error" id="lead-error" hidden></p>
+    <button class="btn btn--primary" type="submit" id="lead-submit">Iscriviti e sblocca</button>
+  </form>
+</dialog>
+<script type="application/json" id="lead-config">{"hubspot_portal_id": "", "hubspot_form_guid": "", "hubspot_subscription_type_id": "", "webhook_url": "", "privacy_url": "https://www.alfadocs.com/it-it/privacy", "articoli_liberi": 3}</script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+  const CFG = JSON.parse($("#lead-config").textContent);
+  const KEY = "alfadocs-radar-lead";
+  const hasLead = () => { try { return !!localStorage.getItem(KEY); } catch (e) { return false; } };
+  const posts = $$(".post");
+
+  // Approfondimenti: i primi N liberi, gli altri sbloccati dopo l'iscrizione
+  function applyLock() { posts.forEach((p, i) => p.classList.toggle("locked", !hasLead() && i >= CFG.articoli_liberi)); }
+
+  // Filtri per categoria (anche da URL: #cat=Normativa)
+  function filter(cat) {
+    $$(".chip").forEach((c) => c.setAttribute("aria-pressed", c.dataset.filter === cat));
+    posts.forEach((p) => (p.hidden = !!cat && p.dataset.cat !== cat));
+  }
+  $$(".chip").forEach((c) => c.addEventListener("click", () => {
+    filter(c.dataset.filter);
+    history.replaceState(null, "", c.dataset.filter ? "#cat=" + encodeURIComponent(c.dataset.filter) : location.pathname);
+  }));
+  const m = location.hash.match(/^#cat=(.+)$/); if (m) filter(decodeURIComponent(m[1]));
+
+  // Form lead
+  const dlg = $("#lead"), form = $("#lead-form"), err = $("#lead-error");
+  let origin = "";
+  $$("[data-open-lead]").forEach((b) => b.addEventListener("click", () => {
+    const post = b.closest(".post"); origin = post ? post.querySelector("h2").textContent : "header";
+    err.hidden = true; dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
+    setTimeout(() => $("#f-nome").focus(), 50);
+  }));
+  const closeDlg = () => (dlg.close ? dlg.close() : dlg.removeAttribute("open"));
+  $("#lead-close").addEventListener("click", closeDlg);
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) closeDlg(); });
+
+  function utm() {
+    const p = new URLSearchParams(location.search), o = {};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","gclid","fbclid"].forEach((k) => p.get(k) && (o[k] = p.get(k)));
+    return o;
+  }
+  async function sendLead(data) {
+    const jobs = [];
+    if (CFG.hubspot_portal_id && CFG.hubspot_form_guid) {
+      const fields = ["firstname","lastname","email","phone","company","jobtitle"].filter((n) => data[n]).map((name) => ({ name, value: data[name] }));
+      const hutk = (document.cookie.match(/hubspotutk=([^;]+)/) || [])[1];
+      jobs.push(fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${CFG.hubspot_portal_id}/${CFG.hubspot_form_guid}`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title, ...(hutk ? { hutk } : {}) },
+          legalConsentOptions: { consent: { consentToProcess: true, text: "Consenso al trattamento dei dati per ricevere AlfaDocs Radar",
+            communications: CFG.hubspot_subscription_type_id ? [{ value: data.marketing === "si", subscriptionTypeId: Number(CFG.hubspot_subscription_type_id), text: "Comunicazioni commerciali AlfaDocs" }] : [] } } })
+      }).then((r) => { if (!r.ok) throw new Error("HubSpot " + r.status); }));
+    }
+    if (CFG.webhook_url) jobs.push(fetch(CFG.webhook_url, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) }));
+    if (!jobs.length) console.warn("[AlfaDocs Radar] Nessuna destinazione lead configurata", data);
+    await Promise.all(jobs);
+  }
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { err.textContent = "Compila tutti i campi obbligatori (*) con dati validi."; err.hidden = false; form.reportValidity(); return; }
+    const fd = Object.fromEntries(new FormData(form));
+    const data = { ...fd, privacy: "si", marketing: fd.marketing ? "si" : "no", origine: origin, pagina: location.href, data: new Date().toISOString(), ...utm() };
+    const btn = $("#lead-submit"); btn.disabled = true; btn.textContent = "Invio in corso…";
+    try {
+      await sendLead(data);
+      try { localStorage.setItem(KEY, "1"); } catch (e2) {}
+      (window.dataLayer = window.dataLayer || []).push({ event: "generate_lead", form: "radar_dentisti", origine: origin });
+      form.reset(); closeDlg(); applyLock();
+    } catch (e2) { err.textContent = "Invio non riuscito. Controlla la connessione e riprova."; err.hidden = false; }
+    finally { btn.disabled = false; btn.textContent = "Iscriviti e sblocca"; }
+  });
+  applyLock();
+})();
+</script>
+</body>
+</html>

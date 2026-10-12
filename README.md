@@ -1,21 +1,21 @@
-# AlfaDocs Academy – Landing corso
+# AlfaDocs Academy – Marketing per studi medici e dentistici
 
-Landing page con i 13 video del corso, nello stile di alfadocs.com.
+Landing con le 13 video lezioni del corso, nello stile di alfadocs.com, ottimizzata per SEO e motori AI.
 
-## Modificare i video
-Apri `index.html` e cerca `const LESSONS` (in fondo al file).
-Ogni riga è una lezione:
+## File
+- `index.html` – la pagina da pubblicare (generata, non modificarla a mano)
+- `lezioni.json` – **tutti i contenuti**: titoli, descrizioni, video, FAQ, title e meta description
+- `template.html` – grafica e struttura
+- `build.py` – rigenera `index.html`
 
-```js
-{ id: "YN0ccSHU9pQ", title: "Marketing vs Comunicazione", duration: "", description: "..." },
-```
-
-- `id`: la parte finale del link YouTube (`https://youtu.be/ID`)
-- I video devono essere **pubblici** o **non in elenco** (non privati)
+## Modificare contenuti o video
+1. Modifica `lezioni.json`
+   - `id`: la parte finale del link YouTube (`https://youtu.be/ID`); i video devono essere pubblici o non in elenco
+   - `data_pubblicazione` (es. `2025-03-14`) e `durata` (es. `12 min`): facoltativi, aiutano la SEO dei video
+   - `sito.url`: l'indirizzo definitivo della pagina (attiva il canonical)
+2. Esegui `python3 build.py`
+3. Carica su GitHub: Vercel ripubblica da solo
 
 ## Vedere la pagina
-YouTube blocca i video se la pagina viene aperta con doppio clic dal computer (`file://`).
-Per vederla funzionante:
-- **GitHub Pages:** Settings → Pages → Branch `main` / root → Save
-- **Vercel:** New Project → importa il repo → Deploy (nessuna configurazione)
-- **In locale:** dalla cartella esegui `python3 -m http.server` e apri http://localhost:8000
+I video YouTube non partono se apri il file con doppio clic (`file://`).
+Usa Vercel/GitHub Pages oppure in locale: `python3 -m http.server` → http://localhost:8000
